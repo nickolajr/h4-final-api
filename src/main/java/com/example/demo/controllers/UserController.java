@@ -16,13 +16,13 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    // Get all products
+    // Get all users
     @GetMapping
     public List<User> getAllProducts() {
         return userRepository.findAll();
     }
 
-    // Get product by ID
+    // Get user by ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getProductById(@PathVariable Long id) {
         return userRepository.findById(id)
@@ -30,13 +30,13 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Create new product
+    // Create new user
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
-    // Update product
+    // Update user
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         return userRepository.findById(id)
@@ -49,7 +49,7 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // Delete product
+    // Delete user
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
         return userRepository.findById(id)
